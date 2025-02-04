@@ -4,6 +4,7 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    zen-browser.url = "github:TotalyEnglizLitrate/zen-browser-flake";
 
     # Home manager
     home-manager = {
@@ -22,36 +23,24 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Nix Darwin (for MacOS machines)
-    darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Homebrew
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
   outputs = {
     self,
     catppuccin,
-    darwin,
     home-manager,
-    nix-homebrew,
     nixpkgs,
+    zen-browser,
     ...
   } @ inputs: let
     inherit (self) outputs;
 
     # Define user configurations
     users = {
-      nabokikh = {
-        avatar = ./files/avatar/face;
-        email = "alexander.nabokikh@olx.pl";
-        fullName = "Alexander Nabokikh";
-        gitKey = "C5810093";
-        name = "nabokikh";
+      engliz = {
+        email = "narendra.s1232@gmail.com";
+        fullName = "Narendra S";
+        name = "engliz";
       };
     };
 
@@ -65,27 +54,12 @@
         modules = [./hosts/${hostname}/configuration.nix];
       };
 
-    # Function for nix-darwin system configuration
-    mkDarwinConfiguration = hostname: username:
-      darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {
-          inherit inputs outputs hostname;
-          userConfig = users.${username};
-        };
-        modules = [
-          ./hosts/${hostname}/configuration.nix
-          home-manager.darwinModules.home-manager
-          nix-homebrew.darwinModules.nix-homebrew
-        ];
-      };
-
     # Function for Home Manager configuration
     mkHomeConfiguration = system: username: hostname:
       home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {inherit system;};
         extraSpecialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs zen-browser;
           userConfig = users.${username};
         };
         modules = [
@@ -95,20 +69,13 @@
       };
   in {
     nixosConfigurations = {
-      energy = mkNixosConfiguration "energy" "nabokikh";
-      nabokikh-z13 = mkNixosConfiguration "nabokikh-z13" "nabokikh";
-    };
-
-    darwinConfigurations = {
-      "nabokikh-mac" = mkDarwinConfiguration "nabokikh-mac" "nabokikh";
+      lattitude5491 = mkNixosConfiguration "lattitude5491" "engliz";
+      ideapad330 = mkNixosConfiguration "ideapad330" "engliz";
     };
 
     homeConfigurations = {
-      "nabokikh@energy" = mkHomeConfiguration "x86_64-linux" "nabokikh" "energy";
-      "nabokikh@nabokikh-mac" = mkHomeConfiguration "aarch64-darwin" "nabokikh" "nabokikh-mac";
-      "nabokikh@nabokikh-z13" = mkHomeConfiguration "x86_64-linux" "nabokikh" "nabokikh-z13";
+      "engliz@lattitude5491" = mkHomeConfiguration "x86_64-linux" "engliz" "lattitude5491";
     };
-
     overlays = import ./overlays {inherit inputs;};
   };
 }
