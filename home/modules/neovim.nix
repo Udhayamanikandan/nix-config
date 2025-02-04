@@ -32,6 +32,7 @@ in {
       tflint
       vscode-langservers-extracted
       yaml-language-server
+      clang-tools
     ];
   };
 
