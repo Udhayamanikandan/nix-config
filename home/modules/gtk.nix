@@ -6,6 +6,10 @@
   # GTK theme configuration
   gtk = {
     enable = true;
+    theme = {
+      name = "Andromeda";
+      package = pkgs.andromeda-gtk-theme;
+    };
     iconTheme = {
       name = "Tela-circle-dark";
       package = pkgs.tela-circle-icon-theme;
@@ -28,14 +32,6 @@
         "file:///home/${userConfig.name}/Downloads/temp"
         "file:///home/${userConfig.name}/Documents/repositories"
       ];
-    };
-  };
-
-  # Enable catppuccin theming for GTK apps.
-  catppuccin = {
-    gtk = {
-      enable = true;
-      gnomeShellTheme = true;
     };
   };
 }
