@@ -1,17 +1,9 @@
-{
-  userConfig,
-  config,
-  ...
-}: {
+{userConfig, ...}: {
   # Install git via home-manager module
   programs.git = {
     enable = true;
     userName = userConfig.fullName;
     userEmail = userConfig.email;
-    signing = {
-      key = config.secerts.gitKey;
-      signByDefault = true;
-    };
     delta = {
       enable = true;
       options = {
