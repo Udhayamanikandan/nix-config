@@ -37,6 +37,7 @@
       fragments
       batmon
       soulseekqt
+      lm_sensors
     ]
     ++ [
       zen-browser.packages.${pkgs.system}.stable
