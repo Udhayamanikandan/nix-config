@@ -38,6 +38,7 @@
       batmon
       soulseekqt
       lm_sensors
+      ffmpeg
     ]
     ++ [
       zen-browser.packages.${pkgs.system}.stable
