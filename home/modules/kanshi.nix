@@ -33,6 +33,22 @@
           }
         ];
       }
+      {
+        profile.name = "mirror";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "enable";
+            position = "0,0";
+          }
+          {
+            criteria = "DP-1";
+            status = "enable";
+            position = "0,0";
+          }
+        ];
+        profile.exec = "wlr-randr --output DP-1 --mirror eDP-1";
+      }
     ];
   };
 }

@@ -48,7 +48,7 @@
     plymouth.enable = true;
 
     # v4l (virtual camera) module settings
-    kernelModules = ["v4l2loopback"];
+    kernelModules = ["v4l2loopback" "uinput" "hid-uclogic"];
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
     ];
@@ -61,7 +61,7 @@
   networking.networkmanager.enable = true;
 
   # Timezone
-  time.timeZone = "Europe/Warsaw";
+  time.timeZone = "Asia/Kolkata";
 
   # Internationalization
   i18n.defaultLocale = "en_US.UTF-8";
@@ -80,20 +80,11 @@
   # Input settings
   services.libinput.enable = true;
 
-  # X11 settings
-  services.xserver = {
-    enable = true;
-    xkb.layout = "pl";
-    xkb.variant = "";
-    excludePackages = with pkgs; [xterm];
-    displayManager.gdm.enable = true;
-  };
-
   # PATH configuration
   environment.localBinInPath = true;
 
-  # Disable CUPS printing
-  services.printing.enable = false;
+  # Enable CUPS for printing
+  services.printing.enable = true;
 
   # Enable devmon for device management
   services.devmon.enable = true;
@@ -114,26 +105,14 @@
     description = userConfig.fullName;
     extraGroups = ["networkmanager" "wheel" "docker"];
     isNormalUser = true;
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
-  # Set User's avatar
-  system.activationScripts.script.text = ''
-    mkdir -p /var/lib/AccountsService/{icons,users}
-    cp ${userConfig.avatar} /var/lib/AccountsService/icons/${userConfig.name}
+  # Shell
+  programs.fish.enable = true;
 
-    touch /var/lib/AccountsService/users/${userConfig.name}
-
-    if ! grep -q "^Icon=" /var/lib/AccountsService/users/${userConfig.name}; then
-      if ! grep -q "^\[User\]" /var/lib/AccountsService/users/${userConfig.name}; then
-        echo "[User]" >> /var/lib/AccountsService/users/${userConfig.name}
-      fi
-      echo "Icon=/var/lib/AccountsService/icons/${userConfig.name}" >> /var/lib/AccountsService/users/${userConfig.name}
-    fi
-  '';
-
-  # Passwordless sudo
-  security.sudo.wheelNeedsPassword = false;
+  # Require password for sudo
+  security.sudo.wheelNeedsPassword = true;
 
   # System packages
   environment.systemPackages = with pkgs; [
@@ -144,14 +123,6 @@
     mesa
   ];
 
-  # Docker configuration
-  virtualisation.docker.enable = true;
-  virtualisation.docker.rootless.enable = true;
-  virtualisation.docker.rootless.setSocketVariable = true;
-
-  # Zsh configuration
-  programs.zsh.enable = true;
-
   # Fonts configuration
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -161,7 +132,6 @@
 
   # Additional services
   services.locate.enable = true;
-  services.locate.localuser = null;
 
   # OpenSSH daemon
   services.openssh.enable = true;

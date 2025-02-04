@@ -8,7 +8,7 @@
       };
 
       terminal = {
-        shell.program = "zsh";
+        shell.program = "fish";
         shell.args = [
           "-l"
           "-c"

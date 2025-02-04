@@ -3,7 +3,6 @@
     ../modules/alacritty.nix
     ../modules/atuin.nix
     ../modules/bat.nix
-    ../modules/brave.nix
     ../modules/btop.nix
     ../modules/fastfetch.nix
     ../modules/fzf.nix
@@ -11,17 +10,16 @@
     ../modules/go.nix
     ../modules/gpg.nix
     ../modules/home.nix
-    ../modules/krew.nix
     ../modules/lazygit.nix
     ../modules/neovim.nix
     ../modules/obs-studio.nix
     ../modules/packages.nix
-    ../modules/saml2aws.nix
     ../modules/scripts.nix
     ../modules/starship.nix
     ../modules/telegram.nix
     ../modules/tmux.nix
-    ../modules/zsh.nix
+    ../modules/zen.nix
+    ../modules/normcap.nix
   ];
 
   # Nixpkgs configuration
