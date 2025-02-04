@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   # Install and configure waybar via home-manager module
   programs.waybar = {
     enable = true;
@@ -29,7 +29,6 @@
 
         modules-right = [
           "custom/recorder"
-          "hyprland/language"
           "tray"
           "bluetooth"
           "pulseaudio"
@@ -129,7 +128,7 @@
           format-alt-click = "click";
           tooltip = true;
           tooltip-format = "{used:0.1f}GB/{total:0.1f}G";
-          on-click-right = "foot --title btop sh -c 'btop'";
+          on-click-right = "${pkgs.alacritty}/bin/alacritty -c ${pkgs.btop}/bin/btop";
         };
 
         pulseaudio = {
