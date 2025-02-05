@@ -58,7 +58,7 @@
   };
 
   # Networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = lib.mkForce true;
 
   # Timezone
   time.timeZone = "Asia/Kolkata";
