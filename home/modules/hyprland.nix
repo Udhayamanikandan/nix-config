@@ -205,19 +205,8 @@ in {
       "window-maximized" = false;
     };
 
-    "org/gnome/desktop/interface" = {
-      "color-scheme" = "prefer-dark";
-      "cursor-theme" = "Yaru";
-      "font-name" = "Roboto 11";
-      "icon-theme" = "Tela-circle-dark";
-    };
-
-    "org/gnome/desktop/wm/preferences" = {
-      "button-layout" = lib.mkForce "";
-    };
-
     "org/gnome/nautilus/preferences" = {
-      "default-folder-viewer" = "list-view";
+      "default-folder-viewer" = "grid-view";
       "migrated-gtk-settings" = true;
       "search-filter-time-type" = "last_modified";
       "search-view" = "list-view";
@@ -242,7 +231,7 @@ in {
       "sort-directories-first" = false;
       "sort-order" = "ascending";
       "type-format" = "category";
-      "view-type" = "list";
+      "view-type" = "grid";
     };
   };
 }
