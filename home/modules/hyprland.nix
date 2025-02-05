@@ -242,7 +242,7 @@ in {
       "sort-directories-first" = false;
       "sort-order" = "ascending";
       "type-format" = "category";
-      "view-type" = "list";
+      "view-type" = "grid";
     };
   };
 }
