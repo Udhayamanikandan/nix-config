@@ -37,10 +37,10 @@
 
     # Define user configurations
     users = {
-      engliz = {
-        email = "narendra.s1232@gmail.com";
-        fullName = "Narendra S";
-        name = "engliz";
+      magicspell = {
+        email = "udhayamanikandan3@gmail.com";
+        fullName = "Udhaya M";
+        name = "magicspell";
       };
     };
 
@@ -69,12 +69,11 @@
       };
   in {
     nixosConfigurations = {
-      lattitude5491 = mkNixosConfiguration "lattitude5491" "engliz";
-      ideapad330 = mkNixosConfiguration "ideapad330" "engliz";
+      swiftgo = mkNixosConfiguration "swiftgo" "magicspell";
     };
 
     homeConfigurations = {
-      "engliz@lattitude5491" = mkHomeConfiguration "x86_64-linux" "engliz" "lattitude5491";
+      "magicspell@swiftgo" = mkHomeConfiguration "x86_64-linux" "magicspell" "swiftgo";
     };
     overlays = import ./overlays {inherit inputs;};
   };

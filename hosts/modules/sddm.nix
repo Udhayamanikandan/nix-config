@@ -2,11 +2,12 @@
   services.displayManager = {
     enable = true;
     autoLogin.enable = true;
-    autoLogin.user = "engliz";
+    autoLogin.user = "magicspell";
     defaultSession = "hyprland";
   };
   services.displayManager.sddm = {
     enable = true;
+    enableHidpi = true;
     wayland.enable = true;
     wayland.compositor = "weston";
     theme = "where_is_my_sddm_theme";

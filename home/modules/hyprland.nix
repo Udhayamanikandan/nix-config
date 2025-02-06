@@ -63,6 +63,7 @@ in {
           no_fade_in = false
           grace = 0
           disable_loading_bar = true
+          fingerprint:enabled = true
       }
 
       # eDP-1 Conifg
