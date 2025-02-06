@@ -160,13 +160,10 @@
           on-scroll-down = "pamixer --default-source -d 5";
         };
 
-        temperature = {
-          interval = 10;
-          tooltip = false;
-          hwmon-path = "/sys/class/hwmon/hwmon4/temp1_input";
-          critical-threshold = 82;
-          format-critical = "{icon} {temperatureC}°C";
-          format = "󰈸 {temperatureC}°C";
+        "custom/temperature" = {
+          exec = "${pkgs.python3}/bin/python -c 'print(int((next(filter(lambda dev: dev.read_text() == \"coretemp\\n\", __import__(\"pathlib\").Path(\"/sys/class/hwmon/\").glob(\"hwmon*/name\"))).parent / \"temp1_input\").read_text()) // 1000)'";
+          interval = 3;
+          format = "{output}°C";
         };
 
         tray = {
