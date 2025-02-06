@@ -135,4 +135,7 @@
 
   # OpenSSH daemon
   services.openssh.enable = true;
+
+  # Running dynamically linked executables
+  programs.nix-ld.enable = true;
 }
