@@ -44,7 +44,8 @@
     kernelParams = ["quiet" "splash"];
     loader.efi.canTouchEfiVariables = true;
     loader.systemd-boot.enable = true;
-    loader.timeout = lib.mkForce 0;
+    loader.systemd-boot.consoleMode = "max";
+    loader.timeout = lib.mkForce 5;
     plymouth.enable = true;
 
     # v4l (virtual camera) module settings
