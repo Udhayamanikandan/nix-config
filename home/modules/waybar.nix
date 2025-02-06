@@ -163,7 +163,7 @@
         temperature = {
           interval = 10;
           tooltip = false;
-          hwmon-path = "/sys/class/hwmon/hwmon1/temp1_input";
+          hwmon-path = "/sys/class/hwmon/hwmon4/temp1_input";
           critical-threshold = 82;
           format-critical = "{icon} {temperatureC}°C";
           format = "󰈸 {temperatureC}°C";
