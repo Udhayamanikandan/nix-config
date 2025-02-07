@@ -20,7 +20,7 @@
   environment.systemPackages = [
     (pkgs.where-is-my-sddm-theme.override {
       themeConfig.General = {
-        background = "${../../files/wallpapers/nix-logo.png}";
+        background = "${../../files/wallpapers/lion_king.jpg}";
         backgroundMode = "none";
       };
     })

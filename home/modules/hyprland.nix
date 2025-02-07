@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  wallpaper = ./../../files/wallpapers/nix-logo.png;
+  wallpaper = ./../../files/wallpapers/lion_king.jpg;
   hyprland_config = ./../../files/configs/hypr;
 in {
   imports = [
